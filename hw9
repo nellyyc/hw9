@@ -1,0 +1,40 @@
+/**
+ *
+ * @author MoaathAlrajab
+ */
+public class Homework09 {
+
+    public static void main(String[] args) {
+    int n = 1;
+    int triangleNumber;
+
+    while (true) {
+
+      triangleNumber = n * (n + 1) / 2;
+
+
+      int divisorsN = countDivisors(n);
+      int divisorsNPlusOne = countDivisors(n + 1);
+      int totalDivisors = divisorsN * divisorsNPlusOne;
+
+
+      if (totalDivisors > 100) {
+        System.out.println("The first triangle number with over 100 divisors is: " + triangleNumber);
+        break;
+      }
+      n++;
+    }
+  }
+
+  static int countDivisors(int number) {
+    int count = 1;
+    int i = 2;
+    while (i * i <= number) {
+      if (number % i == 0) {
+        count *= (number % (i * i) == 0) ? 1 : 2;
+      }
+      i++;
+    }
+    return count * 2;
+  }
+}
